@@ -212,6 +212,7 @@ BootstrapTable.propTypes = {
     onExpandAll: PropTypes.func,
     nonExpandable: PropTypes.array,
     showExpandColumn: PropTypes.bool,
+    hideExpandHeaderColumn: PropTypes.bool,
     onlyOneExpanding: PropTypes.bool,
     expandByColumnOnly: PropTypes.bool,
     expandColumnRenderer: PropTypes.func,
@@ -273,6 +274,7 @@ BootstrapTable.defaultProps = {
   },
   expandRow: {
     renderer: undefined,
+    hideExpandHeaderColumn: false,
     expanded: [],
     nonExpandable: []
   },

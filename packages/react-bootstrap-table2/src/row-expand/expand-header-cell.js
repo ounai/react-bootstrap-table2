@@ -7,6 +7,7 @@ export default class ExpansionHeaderCell extends Component {
   static propTypes = {
     isAnyExpands: PropTypes.bool.isRequired,
     onAllRowExpand: PropTypes.func.isRequired,
+    hideExpandHeaderColumn: PropTypes.bool,
     expandHeaderColumnRenderer: PropTypes.func
   }
 
@@ -22,12 +23,19 @@ export default class ExpansionHeaderCell extends Component {
   }
 
   render() {
-    const { isAnyExpands, expandHeaderColumnRenderer } = this.props;
+    const {
+      isAnyExpands,
+      expandHeaderColumnRenderer,
+      hideExpandHeaderColumn
+    } = this.props;
+
     const attrs = {
       onClick: this.handleCheckBoxClick
     };
 
-    return (
+    if (hideExpandHeaderColumn) {
+      return <th className="expand-cell-header" data-row-selection />;
+    } else return (
       <th className="expand-cell-header" data-row-selection { ...attrs }>
         {
           expandHeaderColumnRenderer ?

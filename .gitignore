@@ -22,3 +22,9 @@ storybook-static
 # build
 lib
 dist
+
+# vim
+*.swp
+*.swo
+*~
+

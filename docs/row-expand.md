@@ -13,6 +13,7 @@
 * [onExpand](#onExpand)
 * [onExpandAll](#onExpandAll)
 * [showExpandColumn](#showExpandColumn)
+* [hideExpandHeaderColumn](#hideExpandHeaderColumn)
 * [onlyOneExpanding](#onlyOneExpanding)
 * [expandByColumnOnly](#expandByColumnOnly)
 * [expandColumnPosition](#expandColumnPosition)
@@ -134,6 +135,16 @@ Default is `false`, if you want to have a expand indicator, give this prop as `t
 const expandRow = {
   renderer: (row) => ...
   showExpandColumn: true
+};
+```
+
+### <a name='hideExpandHeaderColumn'>expandRow.hideExpandHeaderColumn - [Bool]</a>
+Default is `false`. Set as `true` to hide and disable the expand row header column.
+
+```js
+const expandRow = {
+  renderer: (row) => ...
+  hideExpandHeaderColumn: true
 };
 ```
 
