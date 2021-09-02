@@ -15,6 +15,7 @@ import withRowExpansion from './row-expand/row-consumer';
 class Body extends React.Component {
   constructor(props) {
     super(props);
+
     const {
       keyField,
       cellEdit,
@@ -29,7 +30,7 @@ class Body extends React.Component {
 
     // Construct Row Component
     let RowComponent = SimpleRow;
-    const selectRowEnabled = selectRow.mode !== Const.ROW_SELECT_DISABLED;
+    const selectRowEnabled = (selectRow.mode !== Const.ROW_SELECT_DISABLED);
     const expandRowEnabled = !!expandRow.renderer;
 
     if (expandRowEnabled) {
@@ -43,6 +44,7 @@ class Body extends React.Component {
     if (cellEdit.createContext) {
       RowComponent = cellEdit.withRowLevelCellEdit(RowComponent, selectRowEnabled, keyField, _);
     }
+
     this.RowComponent = RowComponent;
   }
 
@@ -68,9 +70,9 @@ class Body extends React.Component {
 
     if (isEmpty) {
       const indication = _.isFunction(noDataIndication) ? noDataIndication() : noDataIndication;
-      if (!indication) {
-        return null;
-      }
+
+      if (!indication) return null;
+
       content = <RowSection content={ indication } colSpan={ visibleColumnSize } />;
     } else {
       const selectRowEnabled = selectRow.mode !== Const.ROW_SELECT_DISABLED;
@@ -89,6 +91,7 @@ class Body extends React.Component {
 
       content = data.map((row, index) => {
         const key = _.get(row, keyField);
+
         const baseRowProps = {
           key,
           row,
@@ -124,3 +127,4 @@ Body.propTypes = {
 };
 
 export default Body;
+

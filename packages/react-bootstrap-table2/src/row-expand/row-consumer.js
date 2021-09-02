@@ -9,11 +9,13 @@ export default (Component) => {
   const renderWithExpansion = (props, expandRow) => {
     let parentClassName = '';
     let className = '';
+
     const key = props.value;
 
     const expanded = _.contains(expandRow.expanded, key);
     const isClosing = _.contains(expandRow.isClosing, key);
-    const expandable = !expandRow.nonExpandable || !_.contains(expandRow.nonExpandable, key);
+    const expandable = (!expandRow.nonExpandable || !_.contains(expandRow.nonExpandable, key));
+
     if (expanded) {
       parentClassName = _.isFunction(expandRow.parentClassName) ?
         expandRow.parentClassName(expanded, props.row, props.rowIndex) :
@@ -33,7 +35,7 @@ export default (Component) => {
         expandRow={ { ...expandRow } }
         className={ cs(props.className, parentClassName) }
       />,
-      expanded || isClosing ? <ExpandRow
+      (expanded || isClosing) ? <ExpandRow
         key={ `${key}-expanding` }
         colSpan={ props.visibleColumnSize }
         expanded={ expanded }
@@ -44,9 +46,11 @@ export default (Component) => {
       </ExpandRow> : null
     ];
   };
+
   return props => (
     <ExpansionContext.Consumer>
       { expandRow => renderWithExpansion(props, expandRow) }
     </ExpansionContext.Consumer>
   );
 };
+

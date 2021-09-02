@@ -19,6 +19,7 @@
 * [expandColumnPosition](#expandColumnPosition)
 * [expandColumnRenderer](#expandColumnRenderer)
 * [expandHeaderColumnRenderer](#expandHeaderColumnRenderer)
+* [expandColumnStyle](#expandColumnStyle)
 * [className](#className)
 * [parentClassName](#parentClassName)
 
@@ -127,6 +128,28 @@ const expandRow = {
 ```
 
 > By default, `react-bootstrap-table2` will help you to handle the click event, it's not necessary to handle again by developer.
+
+### <a name='expandColumnStyle'>expandRow.expandColumnStyle - [Function | Object]</a>
+Apply custom CSS styling to the expand columns. The styles can be supplied as an object, or a function that returns an object. A function will be given one argument, the index of the current row.
+
+Using an object:
+```js
+const expandRow = {
+  renderer: (row) => ...
+  expandColumnStyle: {
+    color: 'red',
+    backgroundColor: 'blue'
+  }
+};
+```
+
+Using a function:
+```js
+const expandRow = {
+  renderer: (row) => ...
+  expandColumnStyle: (rowIndex) => ({ color: 'red', backgroundColor: 'blue' })
+};
+```
 
 ### <a name='showExpandColumn'>expandRow.showExpandColumn - [Bool]</a>
 Default is `false`, if you want to have a expand indicator, give this prop as `true`

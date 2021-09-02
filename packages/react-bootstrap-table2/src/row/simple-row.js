@@ -30,6 +30,7 @@ class SimpleRow extends shouldUpdater(eventDelegater(Component)) {
       tabIndexCell,
       ...rest
     } = this.props;
+
     const trAttrs = this.delegate(attrs);
     const tabIndexStart = (this.props.rowIndex * visibleColumnSize) + 1;
 
@@ -62,3 +63,4 @@ SimpleRow.defaultProps = {
 };
 
 export default SimpleRow;
+
