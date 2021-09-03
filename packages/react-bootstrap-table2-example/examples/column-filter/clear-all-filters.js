@@ -26,8 +26,7 @@ const columns = [{
   filter: textFilter({
     getFilter: (filter) => {
       nameFilter = filter;
-    },
-    onFilter: filterVal => console.log(`Filter product name ${filterVal}`)
+    }
   })
 }, {
   dataField: 'quality',
@@ -37,8 +36,7 @@ const columns = [{
     options: selectOptions,
     getFilter: (filter) => {
       qualityFilter = filter;
-    },
-    onFilter: filterVal => console.log(`Filter quality ${filterVal}`)
+    }
   })
 }, {
   dataField: 'price',
@@ -46,8 +44,7 @@ const columns = [{
   filter: textFilter({
     getFilter: (filter) => {
       priceFilter = filter;
-    },
-    onFilter: filterVal => console.log(`Filter Price: ${filterVal}`)
+    }
   })
 }, {
   dataField: 'inStockDate',
@@ -56,8 +53,7 @@ const columns = [{
   filter: dateFilter({
     getFilter: (filter) => {
       stockDateFilter = filter;
-    },
-    onFilter: filterVal => console.log(`Filter date: ${filterVal}`)
+    }
   })
 }];
 

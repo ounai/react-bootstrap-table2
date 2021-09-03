@@ -80,10 +80,7 @@ const columns = [{
 }];
 
 function afterSaveCell(oldValue, newValue) {
-  console.log('--after save cell--');
-  console.log('New Value was apply as');
-  console.log(newValue);
-  console.log(\`and the type is $\{typeof newValue}\`);
+  console.log(\`New value: $\{newValue} of type: $\{typeof newValue}\`);
 }
 
 <BootstrapTable
@@ -99,10 +96,8 @@ function afterSaveCell(oldValue, newValue) {
 `;
 
 function afterSaveCell(oldValue, newValue) {
-  console.log('--after save cell--');
-  console.log('New Value was apply as');
-  console.log(newValue);
-  console.log(`and the type is ${typeof newValue}`);
+  // eslint-disable-next-line no-console
+  console.log(`New value: ${newValue} of type: ${typeof newValue}`);
 }
 
 export default () => (

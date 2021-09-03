@@ -62,6 +62,7 @@ const afterSearch = (newResult) => {
 `;
 
 const afterSearch = (newResult) => {
+  // eslint-disable-next-line no-console
   console.log(newResult);
 };
 
