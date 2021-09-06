@@ -243,3 +243,4 @@ export const filters = (data, columns, _) => (currFilters, clearFilters = {}) =>
   });
   return result;
 };
+

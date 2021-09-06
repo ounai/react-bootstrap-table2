@@ -11,15 +11,18 @@ import { FILTER_TYPE, FILTER_DELAY } from '../const';
 class TextFilter extends Component {
   constructor(props) {
     super(props);
+
     this.filter = this.filter.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.timeout = null;
+
     function getDefaultValue() {
       if (props.filterState && typeof props.filterState.filterVal !== 'undefined') {
         return props.filterState.filterVal;
       }
       return props.defaultValue;
     }
+
     this.state = {
       value: getDefaultValue()
     };
@@ -92,6 +95,7 @@ class TextFilter extends Component {
       placeholder,
       column: { dataField, text },
       style,
+      activeStyle,
       className,
       onFilter,
       caseSensitive,
@@ -103,19 +107,25 @@ class TextFilter extends Component {
 
     const elmId = `text-filter-column-${dataField}${id ? `-${id}` : ''}`;
 
+    let inputStyle;
+
+    if (this.state.value === '') inputStyle = style;
+    else inputStyle = { ...style, ...activeStyle };
+
     return (
       <label
         className="filter-label"
         htmlFor={ elmId }
       >
         <span className="sr-only">Filter by {text}</span>
+
         <input
           { ...rest }
           ref={ n => this.input = n }
           type="text"
           id={ elmId }
           className={ `filter text-filter form-control ${className}` }
-          style={ style }
+          style={ inputStyle }
           onChange={ this.filter }
           onClick={ this.handleClick }
           placeholder={ placeholder || `Enter ${text}...` }
@@ -136,6 +146,7 @@ TextFilter.propTypes = {
   delay: PropTypes.number,
   placeholder: PropTypes.string,
   style: PropTypes.object,
+  activeStyle: PropTypes.object,
   className: PropTypes.string,
   caseSensitive: PropTypes.bool,
   getFilter: PropTypes.func
@@ -146,8 +157,11 @@ TextFilter.defaultProps = {
   filterState: {},
   defaultValue: '',
   caseSensitive: false,
-  id: null
+  id: null,
+  style: {},
+  activeStyle: {}
 };
 
 
 export default TextFilter;
+

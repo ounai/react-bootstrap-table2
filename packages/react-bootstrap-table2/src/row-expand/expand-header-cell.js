@@ -29,18 +29,18 @@ export default class ExpansionHeaderCell extends Component {
       hideExpandHeaderColumn
     } = this.props;
 
-    const attrs = {
-      onClick: this.handleCheckBoxClick
-    };
+    const attrs = {};
 
-    if (hideExpandHeaderColumn) {
-      return <th className="expand-cell-header" data-row-selection />;
-    } else return (
+    if (!hideExpandHeaderColumn) attrs.onClick = this.handleCheckBoxClick;
+
+    return (
       <th className="expand-cell-header" data-row-selection { ...attrs }>
         {
-          expandHeaderColumnRenderer ?
-            expandHeaderColumnRenderer({ isAnyExpands }) :
-            (isAnyExpands ? '(-)' : '(+)')
+          hideExpandHeaderColumn ?
+            null :
+            expandHeaderColumnRenderer ?
+              expandHeaderColumnRenderer({ isAnyExpands }) :
+              (isAnyExpands ? '(-)' : '(+)')
         }
       </th>
     );

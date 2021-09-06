@@ -42,7 +42,16 @@ export default class ExpandCell extends Component {
   }
 
   render() {
-    const { expanded, expandable, expandColumnRenderer, tabIndex, rowKey, expandColumnStyle, rowIndex } = this.props;
+    const {
+      expanded,
+      expandable,
+      expandColumnRenderer,
+      tabIndex,
+      rowKey,
+      expandColumnStyle,
+      rowIndex
+    } = this.props;
+
     const attrs = {};
 
     if (tabIndex !== -1) attrs.tabIndex = tabIndex;
@@ -50,14 +59,14 @@ export default class ExpandCell extends Component {
     let style = {};
 
     if (expandColumnStyle) {
-      if (typeof(expandColumnStyle) === 'object') {
+      if (typeof expandColumnStyle === 'object') {
         style = expandColumnStyle;
-      } else if (typeof(expandColumnStyle) === 'function') {
+      } else if (typeof expandColumnStyle === 'function') {
         style = expandColumnStyle(rowIndex);
 
-        if (typeof(style) !== 'object') {
+        if (typeof style !== 'object') {
           throw new Error('expandRow.expandColumnStyle() did not return object');
-	}
+        }
       } else {
         throw new Error('expandRow.expandColumnStyle must be object or function');
       }
