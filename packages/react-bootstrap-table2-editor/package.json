@@ -1,5 +1,5 @@
 {
-  "name": "react-bootstrap-table2-editor",
+  "name": "@ounai/react-bootstrap-table2-editor",
   "version": "1.4.0",
   "description": "it's the editor addon for react-bootstrap-table2",
   "main": "./lib/index.js",
